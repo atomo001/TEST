@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>简单的 HTML 页面</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --text: #1f2933;
+      --muted: #52606d;
+      --accent: #2563eb;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0f172a;
+        --card: #111827;
+        --text: #e5e7eb;
+        --muted: #9ca3af;
+        --accent: #60a5fa;
+        --shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at 15% 20%, rgba(96, 165, 250, 0.12), transparent 25%),
+        radial-gradient(circle at 85% 30%, rgba(52, 211, 153, 0.12), transparent 25%),
+        radial-gradient(circle at 50% 80%, rgba(244, 114, 182, 0.12), transparent 30%),
+        var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px;
+    }
+
+    .card {
+      width: min(960px, 100%);
+      background-color: var(--card);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+    }
+
+    .hero {
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.12), rgba(52, 211, 153, 0.08));
+      padding: 48px 48px 40px;
+    }
+
+    .hero h1 {
+      margin: 0 0 12px;
+      font-size: clamp(28px, 3vw + 12px, 40px);
+      letter-spacing: -0.02em;
+    }
+
+    .hero p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 17px;
+      max-width: 640px;
+      line-height: 1.6;
+    }
+
+    .cta {
+      margin-top: 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 18px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 15px;
+      text-decoration: none;
+      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.35);
+      transition: transform 150ms ease, box-shadow 150ms ease;
+    }
+
+    .cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(37, 99, 235, 0.45);
+    }
+
+    .content {
+      padding: 32px 48px 48px;
+      display: grid;
+      gap: 24px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+
+    .feature {
+      padding: 18px 18px 16px;
+      border-radius: 14px;
+      border: 1px solid rgba(82, 96, 109, 0.15);
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(8px);
+      transition: transform 150ms ease, border-color 150ms ease, box-shadow 150ms ease;
+    }
+
+    .feature:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    .feature h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+    }
+
+    .feature p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    .footer {
+      padding: 20px 48px 28px;
+      border-top: 1px dashed rgba(82, 96, 109, 0.25);
+      color: var(--muted);
+      font-size: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+<body>
+  <article class="card">
+    <header class="hero">
+      <h1>欢迎来到简单的 HTML 页面</h1>
+      <p>这是一个干净的示例页面，展示了基本的结构、排版与样式。你可以将它作为起点，快速构建自己的网页。</p>
+      <a class="cta" href="#features">查看亮点</a>
+    </header>
+
+    <main class="content" id="features">
+      <section class="feature">
+        <h3>语义化结构</h3>
+        <p>使用 header、main、section 等标签，让页面对搜索引擎和辅助工具更加友好。</p>
+      </section>
+      <section class="feature">
+        <h3>响应式布局</h3>
+        <p>通过网格布局和流式宽度，页面会在不同屏幕上自动调整，保持舒适的阅读体验。</p>
+      </section>
+      <section class="feature">
+        <h3>精简样式</h3>
+        <p>轻量的 CSS 与系统字体搭配，既保证了美观度，也方便你继续扩展或修改。</p>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>轻松开始，保持简洁。</span>
+      <span>Made with HTML &amp; CSS</span>
+    </footer>
+  </article>
+</body>
+</html>
