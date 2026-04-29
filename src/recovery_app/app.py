@@ -56,7 +56,9 @@ def recover(req: RecoveryRequest):
     if not req.output_dir:
         raise HTTPException(400, "output_dir required")
     overwrite_risk = adapter.requires_confirmation(RiskAction.OVERWRITE_FILE)
-    return {"accepted": True, "need_confirmation": overwrite_risk, "request": req}
+    if overwrite_risk and not req.allow_overwrite:
+        return {"accepted": False, "need_confirmation": True, "message": "risk confirmation required"}
+    return {"accepted": True, "need_confirmation": overwrite_risk, "request": req.__dict__}
 
 
 def _run_scan(task_id: str, req: ScanRequest) -> None:
