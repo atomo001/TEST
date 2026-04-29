@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Recovery Assistant</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+<div class="container">
+  <h1>Recovery Assistant</h1>
+  <p class="subtitle">Default read-only scan, with guided recovery flow.</p>
+
+  <div class="card">
+    <label>Disk / Partition</label>
+    <input id="source" placeholder="/dev/sdb1 or image.dd" />
+    <button onclick="startScan()">Start Scan</button>
+  </div>
+
+  <div class="card">
+    <h3>Progress</h3>
+    <div class="progress"><div id="bar"></div></div>
+    <p id="status">Idle</p>
+  </div>
+
+  <div class="card">
+    <h3>Recoverable Files</h3>
+    <label>Filter by extension</label>
+    <input id="filter" placeholder="jpg,pdf,mp4" oninput="applyFilter()" />
+    <ul id="fileList"></ul>
+  </div>
+
+  <div class="card">
+    <h3>Recovery</h3>
+    <label>Output directory</label>
+    <input id="outputDir" placeholder="/tmp/recovered" />
+    <button onclick="recover()">Run Recovery</button>
+    <pre id="log"></pre>
+  </div>
+</div>
+<script src="/static/app.js"></script>
+</body>
+</html>
